@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YOKO</title>
+<link rel="icon" type="image/png" href="images/Konnectly.png">
+
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+/>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+  scroll-behavior:smooth;
+}
+
+body{
+  background:linear-gradient(135deg,#e6fff4,#f4fffa);
+  overflow-x:hidden;
+}
+
+
+header{
+  position:fixed;
+  top:20px;
+  left:50%;
+  transform:translateX(-50%);
+  background:rgba(255,255,255,0.6);
+  backdrop-filter:blur(15px);
+  padding:14px 30px;
+  border-radius:60px;
+  display:flex;
+  align-items:center;
+  gap:40px;
+  z-index:1000;
+  box-shadow:0 5px 20px rgba(0,0,0,0.05);
+  flex-wrap:nowrap; 
+}
+
+header a{
+  text-decoration:none;
+  color:#064e3b;
+  font-size:14px;
+  font-weight:500;
+  transition:0.3s;
+  white-space:nowrap;
+}
+
+header a:hover{
+  color:#009688;
+}
+
+.logo{
+  font-size:30px;
+  font-weight:900;
+  background:linear-gradient(90deg,#00c853,#009688);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.brand img{
+  height:28px;     
+  width:auto;
+  width: 50px;
+}
+@media (max-width:600px){
+  .brand img{
+    height:24px;
+  }
+  .logo{
+    font-size:18px;
+  }
+}
+.hamburger{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  cursor:pointer;
+}
+
+.hamburger span{
+  width:22px;
+  height:2px;
+  background:#064e3b;
+  border-radius:2px;
+}
+
+.nav-links{
+  display:flex;
+  gap:28px;
+}
+
+
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:120px 10%;
+  text-align:center;
+}
+
+.hero-text{
+  max-width:650px;
+  margin:0 auto;
+}
+
+.hero-text h1{
+  font-size:clamp(28px, 6vw, 52px);
+  font-weight:800;
+  color:#064e3b;
+  line-height:1.2;
+}
+
+.hero-text span{
+  background:linear-gradient(90deg,#00c853,#009688);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.hero-text p{
+  margin-top:18px;
+  font-size:clamp(14px, 3.5vw, 18px);
+ }
+
+.buttons{
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.btn{
+    display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  padding:14px 28px;
+  border-radius:30px;
+  text-decoration:none;
+ box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+.btn i{
+  font-size:18px;
+}
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 5px 20px rgba(0,0,0,0.15);
+}
+
+
+.section-title{
+  text-align:center;
+  font-size:36px;
+  font-weight:800;
+  color:#064e3b;
+  margin-bottom:60px;
+}
+
+.slider{
+  padding:100px 0;
+  overflow:hidden;
+}
+
+.slide-track{
+  display:flex;
+  gap:30px;
+  animation:scroll 25s linear infinite;
+}
+
+.slide-track img{
+  width:280px;
+  height:180px;
+  object-fit:cover;
+  border-radius:20px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.1);
+}
+
+@keyframes scroll{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
+}
+
+
+.how{
+  padding:100px 10%;
+  text-align:center;
+}
+
+.steps{
+  display:flex;
+  justify-content:center;
+  gap:50px;
+  flex-wrap:wrap;
+}
+
+.step-card{
+  background:white;
+  padding:30px;
+  border-radius:20px;
+  width:260px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+  transition:0.3s;
+}
+
+.step-card:hover{
+  transform:translateY(-8px);
+}
+
+.step-number{
+  width:45px;
+  height:45px;
+  background:linear-gradient(90deg,#00c853,#009688);
+  color:white;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  margin:0 auto 20px;
+}
+
+
+.why{
+  padding:100px 10%;
+  background:white;
+  text-align:center;
+}
+
+.features{
+  display:flex;
+  justify-content:center;
+  gap:50px;
+  flex-wrap:wrap;
+}
+
+.feature-card{
+  background:#f0fdf4;
+  padding:25px;
+  border-radius:20px;
+  width:260px;
+  transition:0.3s;
+}
+
+.feature-card:hover{
+  transform:translateY(-8px);
+  background:white;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+
+.faq{
+  padding:100px 10%;
+}
+
+.faq-item{
+  margin-bottom:20px;
+  background:white;
+  padding:20px;
+  border-radius:15px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.05);
+  transition:0.3s;
+}
+
+.faq-item:hover{
+  transform:translateY(-5px);
+}
+
+
+footer{
+  text-align:center;
+  padding:30px;
+  background:#064e3b;
+  color:white;
+  font-size:14px;
+}
+
+
+@media(max-width:900px){
+
+  header{
+    gap:30px;
+    padding:12px 25px;
+  }
+
+  .hero{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .hero-text h1{
+    font-size:36px;
+  }
+
+  .phone{
+    width:260px;
+    height:480px;
+  }
+
+  .section-title{
+    font-size:28px;
+  }
+
+}
+@media (max-width:480px){
+  .buttons{
+    gap:18px;
+  }
+  .btn{
+    width:100%;
+    max-width:260px;
+    text-align:center;
+    
+  }
+}
+@media (max-width:768px){
+
+  .nav-links{
+    position:absolute;
+    top:70px;
+    left:50%;
+    transform:translateX(-50%);
+    background:rgba(255,255,255,0.95);
+    backdrop-filter:blur(15px);
+    border-radius:20px;
+    flex-direction:column;
+    gap:18px;
+    padding:20px 30px;
+    display:none;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+  }
+
+  .nav-links.active{
+    display:flex;
+  }
+
+  .hamburger{
+    display:flex;
+  }
+}
+.store-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:14px 30px;
+  color:#fffefe;
+}
+
+.store-btn i{
+  font-size:18px;
+  color:#ffffff;
+}
+
+/* ================= SERVICES ================= */
+
+#services{
+  padding:100px 10%;
+}
+
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:40px;
+}
+
+.service-card{
+  background:white;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+  transition:0.3s;
+}
+
+.service-card img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+}
+
+.service-card h3{
+  margin:20px;
+  font-size:18px;
+  color:#064e3b;
+}
+
+.service-card p{
+  margin:0 20px 25px;
+  font-size:14px;
+  color:#555;
+}
+
+.service-card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 15px 35px rgba(0,0,0,0.12);
+}
+@media (max-width:600px){
+
+  header{
+    padding:12px 20px;
+    gap:18px;
+  }
+
+  header a{
+    font-size:13px;
+  }
+
+  .hero{
+    padding:140px 6% 80px;
+  }
+
+  .hero-text{
+    max-width:100%;
+  }
+}
+
+
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+  <div class="brand">
+    <img src="images/Logo.png" alt="Konnectly Logo">
+    <span class="logo">YOKO</span>
+  </div>
+
+  <nav class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#how">How it Works</a>
+    <a href="#why">Why Us</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</header>
+
+
+
+<section class="hero">
+  <div class="hero-text">
+    <h1>INDIA'S FIRST <br><span>QUICK</span> HOME SERVICE APP</h1>
+    <p>Build to help local business go digital.</p>
+
+   <div class="buttons">
+  <a href="#" class="btn">
+    <i class="fa-brands fa-google-play"></i>
+    <span>Google Play</span>
+  </a>
+
+  <a href="#" class="btn">
+    <i class="fa-brands fa-apple"></i>
+    <span>App Store</span>
+  </a>
+</div>
+  </div>
+</section>
+
+
+ 
+
+<section class="slider" id="services">
+  <h2 class="section-title">Our Services</h2>
+
+  <div class="services-grid">
+
+    <div class="service-card">
+      <img src="images/cleaning.jpg">
+      <h3>Home services</h3>
+      <p>Reliable help at your doorstep, whenever you need it.</p>
+    </div>
+
+    <div class="service-card">
+      <img src="images/electrician.jpg">
+      <h3>Professional Services</h3>
+      <p>Expert solutions delivered with precision and trust.</p>
+    </div>
+
+    <div class="service-card">
+      <img src="images/carpenter.jpg">
+      <h3>Clinics and consultants</h3>
+      <p>Compassionate care, trusted expertise.</p>
+    </div>
+
+    <div class="service-card">
+      <img src="images/plumber.jpg">
+      <h3>Education & Coaching</h3>
+      <p>Empowering minds to learn, grow, and succeed.</p>
+    </div>
+
+    <div class="service-card">
+  <img src="images/AC.jpg">
+  <h3>Saloons & Wellness Centres</h3>
+  <p>Where beauty meets relaxation and self-care begins.</p>
+</div>
+
+<div class="service-card">
+  <img src="images/beautician.jpg">
+  <h3>Gym & Fitness</h3>
+  <p>Stronger every day, one rep at a time.</p>
+</div>
+
+
+  </div>
+</section>
+
+
+<section class="how" id="how">
+  <h2 class="section-title">How It Works</h2>
+
+  <div class="steps">
+
+    <div class="step-card">
+      <div class="step-number">1</div>
+      <h3>Choose Service</h3>
+      <p>Select the service you need from our app.</p>
+    </div>
+
+    <div class="step-card">
+      <div class="step-number">2</div>
+      <h3>Set Date & Time</h3>
+      <p>Pick your convenient slot instantly.</p>
+    </div>
+
+    <div class="step-card">
+      <div class="step-number">3</div>
+      <h3>Relax & Track</h3>
+      <p>Professional arrives and you can track live updates.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="why" id="why">
+  <h2 class="section-title">Why Choose YOKO?</h2>
+
+  <div class="features">
+
+    <div class="feature-card">
+      <h3>Verified Professionals</h3>
+      <p>Every expert is background checked and trained.</p>
+    </div>
+
+    <div class="feature-card">
+      <h3> Quick Booking</h3>
+      <p>Book services in under 60 seconds.</p>
+    </div>
+
+    <div class="feature-card">
+      <h3> Transparent Pricing</h3>
+      <p>No hidden charges. What you see is what you pay.</p>
+    </div>
+
+    <div class="feature-card">
+      <h3> Real-Time Tracking</h3>
+      <p>Track your service professional live in the app.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="faq" id="faq">
+  <h2 class="section-title">Frequently Asked Questions</h2>
+
+  <div class="faq-item">
+    <h4>How fast can I book a service?</h4>
+    <p>You can book a service in less than 2 minutes using our app.</p>
+  </div>
+
+  <div class="faq-item">
+    <h4>Are your professionals verified?</h4>
+    <p>Yes, all experts go through strict verification and training.</p>
+  </div>
+
+  <div class="faq-item">
+    <h4>What if I want to reschedule?</h4>
+    <p>You can easily reschedule from the app dashboard.</p>
+  </div>
+
+  <div class="faq-item">
+    <h4>Do you offer refunds?</h4>
+    <p>Yes, if you're not satisfied, we provide support and refunds as per policy.</p>
+  </div>
+
+</section>
+
+
+<footer>
+  © 2026 YOKO. All rights reserved.
+</footer>
+
+<script>
+
+function toggleMenu(){
+  document.querySelector('.nav-links').classList.toggle('active');
+}
+
+const images = document.querySelectorAll(".screen img");
+let index = 0;
+
+setInterval(() => {
+  images[index].classList.remove("active");
+  index = (index + 1) % images.length;
+  images[index].classList.add("active");
+}, 3000);
+</script>
+
+</body>
+</html>
